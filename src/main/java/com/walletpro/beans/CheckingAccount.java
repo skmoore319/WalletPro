@@ -14,13 +14,13 @@ public class CheckingAccount {
 	private String accountName;
 	private double balance;
 	private LocalDateTime creationDate;
-	private Authenticator primaryUser;
+	private User primaryUser;
 	private List<Authenticator> sharedUsers;
 	private List<Transaction> history;
 	private NumberFormat doubleFormatter = new DecimalFormat("#0.00");
 	
 	// Creates a checking account with only one primary user and starting balance of $0.00
-	public CheckingAccount(String accountName, Authenticator primaryUser) {
+	public CheckingAccount(String accountName, User primaryUser) {
 		super();
 		numberOfAccounts++;
 		this.accountNumber = numberOfAccounts;
@@ -30,11 +30,12 @@ public class CheckingAccount {
 		this.sharedUsers = new ArrayList<>();
 		this.primaryUser = primaryUser;
 		this.history = new ArrayList<>();
+		primaryUser.addAccount(this);
 		
 	}
 
 	// Creates a checking account with only one primary user and a positive starting balance
-	public CheckingAccount(String accountName, double balance, Authenticator primaryUser) {
+	public CheckingAccount(String accountName, double balance, User primaryUser) {
 		super();
 		numberOfAccounts++;
 		this.accountNumber = numberOfAccounts;
@@ -44,11 +45,11 @@ public class CheckingAccount {
 		this.sharedUsers = new ArrayList<>();
 		this.primaryUser = primaryUser;
 		this.history = new ArrayList<>();
-		
+		primaryUser.addAccount(this);
 	}
 
 	// Creates a checking account with up to 5 other shared users and starting balance of $0.00
-	public CheckingAccount(String accountName, Authenticator primaryUser, List<Authenticator> sharedUsers) {
+	public CheckingAccount(String accountName, User primaryUser, List<Authenticator> sharedUsers) {
 		super();
 		numberOfAccounts++;
 		this.accountNumber = numberOfAccounts;
@@ -58,11 +59,11 @@ public class CheckingAccount {
 		this.primaryUser = primaryUser;
 		this.sharedUsers = sharedUsers;
 		this.history = new ArrayList<>();
-		
+		primaryUser.addAccount(this);
 	}
 
 	// Creates a checking account with up to 5 other shared users and a positive starting balance
-	public CheckingAccount(String accountName, double balance, Authenticator primaryUser,
+	public CheckingAccount(String accountName, double balance, User primaryUser,
 			List<Authenticator> sharedUsers) {
 		super();
 		numberOfAccounts++;
@@ -73,7 +74,7 @@ public class CheckingAccount {
 		this.primaryUser = primaryUser;
 		this.sharedUsers = sharedUsers;
 		this.history = new ArrayList<>();
-		
+		primaryUser.addAccount(this);
 	}
 
 	public static int getNumberOfAccounts() {
@@ -92,11 +93,11 @@ public class CheckingAccount {
 		this.accountName = accountName;
 	}
 
-	public Authenticator getPrimaryUser() {
+	public User getPrimaryUser() {
 		return primaryUser;
 	}
 
-	public void setPrimaryUser(Authenticator primaryUser) {
+	public void setPrimaryUser(User primaryUser) {
 		this.primaryUser = primaryUser;
 	}
 
