@@ -1,5 +1,7 @@
 package com.walletpro.beans;
 
+import java.io.Serializable;
+
 import com.walletpro.helpers.Authenticator;
 
 /*
@@ -7,8 +9,12 @@ import com.walletpro.helpers.Authenticator;
  * required to supply in order to do privileged things such as view any user's
  * transaction history
  */
-public class Admin extends User {
+public class Admin extends User implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2425181879377099585L;
 	// As more administrators join the team, different ID numbers will be generated
 	private static int adminNumber = 1000000;
 	private String employeeID;

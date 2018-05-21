@@ -65,7 +65,7 @@ public class Transaction implements Serializable {
 			sign = "-";
 		}
 		return "On: " + timestamp + " |   Item: " + name + " |  " + creditOrDebit + ": " + sign + "$"
-				+ formatter.format(Math.abs(amount)) + " |  $" + formatter.format(storedBalance);
+				+ formatter.format(Math.abs(amount)) + " |  Current Balance: $" + formatter.format(storedBalance);
 	}
 	
 	

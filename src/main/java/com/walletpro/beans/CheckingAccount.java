@@ -1,5 +1,6 @@
 package com.walletpro.beans;
 
+import java.io.Serializable;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.time.LocalDateTime;
@@ -8,7 +9,11 @@ import java.util.List;
 
 import com.walletpro.helpers.Authenticator;
 
-public class CheckingAccount {
+public class CheckingAccount implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7229169979532625566L;
 	private static int numberOfAccounts = 0;
 	private int accountNumber;
 	private String accountName;
@@ -18,6 +23,7 @@ public class CheckingAccount {
 	private List<Authenticator> sharedUsers;
 	private List<Transaction> history;
 	private NumberFormat doubleFormatter = new DecimalFormat("#0.00");
+//	private TransactionSerializer tranSave;
 	
 	// Creates a checking account with only one primary user and starting balance of $0.00
 	public CheckingAccount(String accountName, User primaryUser) {
@@ -123,7 +129,7 @@ public class CheckingAccount {
 		// actually have.
 		balance += Math.abs(amount);
 		history.add(new Transaction("Bank Deposit", amount, this));
-		System.out.println("$" + doubleFormatter.format(amount) + " was deposited into your account.");
+		//System.out.println("$" + doubleFormatter.format(amount) + " was deposited into your account.");
 	}
 	
 	public void withdraw(double amount) {
@@ -132,7 +138,7 @@ public class CheckingAccount {
 		}
 		else {
 			balance -= Math.abs(amount);
-			System.out.println("$" + doubleFormatter.format(amount) + " was withdrawn from your account.");
+			//System.out.println("$" + doubleFormatter.format(amount) + " was withdrawn from your account.");
 			history.add(new Transaction("Bank Withdrawal", -1*amount, this));
 		}
 	}
@@ -162,10 +168,16 @@ public class CheckingAccount {
 				+ doubleFormatter.format(balance);
 	}
 	
+	// Call this in the prompts to ensure that CheckingAccount keeps issuing unique
+	// account numbers between sessions, when the file has been opened.
+	public static void updateNumOfAccounts(List<User> users) {
+		numberOfAccounts = users.size() - 1;
+	}
+	
 	public String viewTransactions() {
 		
 		String transactionHistory = "";
-		
+				
 		if (history.size() > 0) {
 			for (Transaction e : history) {
 				transactionHistory = transactionHistory + "\n" + e.toString();

@@ -1,5 +1,6 @@
 package com.walletpro.beans;
 
+import java.io.Serializable;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.time.LocalDateTime;
@@ -15,7 +16,11 @@ import com.walletpro.helpers.Authenticator;
  * the authenticator, will create a session for them,
  * and allow them to access all of their bank accounts
  */
-public class User {
+public class User implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6530937686106188623L;
 	private String firstName;
 	private String lastName;
 	protected Authenticator credentials; // Protected is not ideal, but necessary for this implementation to support the creation of admins.

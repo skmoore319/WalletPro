@@ -1,5 +1,7 @@
 package com.walletpro.helpers;
 
+import java.io.Serializable;
+
 import com.walletpro.beans.Admin;
 import com.walletpro.beans.User;
 
@@ -8,8 +10,12 @@ import com.walletpro.beans.User;
  * username.
  * 
  */
-public class Authenticator {
+public class Authenticator implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2915376559780243238L;
 	private String username;
 	private String password;
 	private String adminID;
