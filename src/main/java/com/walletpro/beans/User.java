@@ -63,7 +63,7 @@ public class User implements Serializable {
 	// Get a list of checking accounts that the person has.
 	// No setters.
 	public List<CheckingAccount> getAccounts() {
-		return accounts;
+		return this.accounts;
 	}
 	
 	public void addAccount(CheckingAccount newAccount) {
@@ -87,6 +87,14 @@ public class User implements Serializable {
 	
 	public boolean isPrimary(CheckingAccount testAccount) {
 		return this.equals(testAccount.getPrimaryUser());
+	}
+	
+	public boolean isAdmin() {
+		return this.getClass().getName().equals("com.walletpro.beans.Admin");
+	}
+	
+	public String getEmployeeID() {
+		return "";
 	}
 	
 	

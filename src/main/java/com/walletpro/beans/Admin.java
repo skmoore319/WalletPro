@@ -1,6 +1,8 @@
 package com.walletpro.beans;
 
 import java.io.Serializable;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import com.walletpro.helpers.Authenticator;
 
@@ -34,6 +36,11 @@ public class Admin extends User implements Serializable{
 
 	public static int getAdminNumber() {
 		return adminNumber;
+	}
+	
+	public static void updateAdminNumber(List<User> users) {
+		List<User> admins = users.stream().filter(e -> e.isAdmin()).collect(Collectors.toList());
+		adminNumber = admins.size();
 	}
 
 }

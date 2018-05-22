@@ -129,7 +129,7 @@ public class CheckingAccount implements Serializable {
 		// actually have.
 		balance += Math.abs(amount);
 		history.add(new Transaction("Bank Deposit", amount, this));
-		//System.out.println("$" + doubleFormatter.format(amount) + " was deposited into your account.");
+		System.out.println("$" + doubleFormatter.format(amount) + " was deposited into your account.");
 	}
 	
 	public void withdraw(double amount) {
@@ -138,7 +138,7 @@ public class CheckingAccount implements Serializable {
 		}
 		else {
 			balance -= Math.abs(amount);
-			//System.out.println("$" + doubleFormatter.format(amount) + " was withdrawn from your account.");
+			System.out.println("$" + doubleFormatter.format(amount) + " was withdrawn from your account.");
 			history.add(new Transaction("Bank Withdrawal", -1*amount, this));
 		}
 	}
@@ -162,10 +162,10 @@ public class CheckingAccount implements Serializable {
 			shared = "There are no other users sharing this account.";
 		}
 		
-		return accountName + "\nAccount Number "
+		return primaryUser.getCredentials().getUsername() + "\n" + accountName + "\nAccount Number "
 				+ accountNumber + " -- created on " + creationDate
-				+ "\nPrimary User: " + primaryUser + "\n\n" + shared + "\n\nYour current balance is: $"
-				+ doubleFormatter.format(balance);
+				+ "\nPrimary User: " + primaryUser.getFirstName() + " " + primaryUser.getLastName()
+				+ "\n\n" + shared + "\n\nYour current balance is: $" + doubleFormatter.format(balance);
 	}
 	
 	// Call this in the prompts to ensure that CheckingAccount keeps issuing unique

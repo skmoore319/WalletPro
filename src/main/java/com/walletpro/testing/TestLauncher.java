@@ -3,6 +3,7 @@ package com.walletpro.testing;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.walletpro.beans.Admin;
 import com.walletpro.beans.CheckingAccount;
 import com.walletpro.beans.User;
 import com.walletpro.dao.UserDao;
@@ -40,9 +41,9 @@ public class TestLauncher {
 //		System.out.println(myCred.verify(tryThis));
 		
 		//System.out.println(CheckingAccount.getNumberOfAccounts());
-//		User scott = new User("Scott", "Moore", "skmoore", "123123");
-//		User scott2 = new User("Scott", "Moore", "skm319", "111111");
-//		User john = new User("John", "Smith", "js321", "password");
+		User scott = new User("Scott", "Moore", "skmoore", "123123");
+		User scott2 = new User("Scott", "Moore", "skm319", "111111");
+		User john = new User("John", "Smith", "js321", "password");
 		
 		// Time to test FileIO, at the user level.
 		UserDao userSave = new UserSerializer();
@@ -78,15 +79,23 @@ public class TestLauncher {
 //		everybody.add(john);
 		
 //		userSave.save(everybody, pathName);
+//		Admin jack = new Admin("Jack", "Fletcher", "capnJack", "123456");
+//		everybody.add(jack);
+//		System.out.println(jack);
+//		userSave.save(everybody, pathName);
 //		--------------------------------------------------------------------------
 //		End phase of output test. Comment out the above, except for UserSerializer and pathName
 		
 		// Begin input test. Reading a previously outputted file should return the original objects.
-		List<User> everybody = userSave.open(pathName);
-		System.out.println(CheckingAccount.getNumberOfAccounts());
-		System.out.println(everybody);
-		CheckingAccount.updateNumOfAccounts(everybody);
-		System.out.println(CheckingAccount.getNumberOfAccounts());
+//		List<User> everybody = userSave.open(pathName);
+//		System.out.println(CheckingAccount.getNumberOfAccounts());
+//		System.out.println(everybody);
+//		CheckingAccount.updateNumOfAccounts(everybody);
+//		System.out.println(CheckingAccount.getNumberOfAccounts());
+//		System.out.println(everybody.size());
+//		System.out.println(everybody.get(3).getFirstName());
+//		Admin jack = (Admin) everybody.get(3);
+//		System.out.println(jack.getEmployeeID());
 		
 //		TransactionSerializer tranSzr = new TransactionSerializer();
 //		CheckingAccount second = new CheckingAccount("Scott 2", scott);
