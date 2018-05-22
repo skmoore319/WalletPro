@@ -41,48 +41,53 @@ public class TestLauncher {
 //		System.out.println(myCred.verify(tryThis));
 		
 		//System.out.println(CheckingAccount.getNumberOfAccounts());
-		User scott = new User("Scott", "Moore", "skmoore", "123123");
-		User scott2 = new User("Scott", "Moore", "skm319", "111111");
+		User scott = new User("Scott", "Moore", "skmoore123", "123123");
+		User scott2 = new User("Scott", "Moore", "skm123", "111111");
 		User john = new User("John", "Smith", "js321", "password");
+		
 		
 		// Time to test FileIO, at the user level.
 		UserDao userSave = new UserSerializer();
 		String pathName = "User Test.txt";
 		
-//		CheckingAccount myAccount = new CheckingAccount("Scott's Main Account", scott);
-//		CheckingAccount myOtherAccount = new CheckingAccount("Fun Stuff", scott);
-//		CheckingAccount otherScott = new CheckingAccount("Munny", scott2);
-//		CheckingAccount johnAccount = new CheckingAccount("John Account", john);
-//		
-//		myAccount.deposit(1000);
-//		myAccount.withdraw(40);
-//		myAccount.withdraw(57.63);
-//		myAccount.withdraw(500.10);
-//		myAccount.deposit(800);
-//		
-//		myOtherAccount.deposit(70);
-//		myOtherAccount.deposit(32.67);
-//		myOtherAccount.deposit(49.73);
-//		myOtherAccount.deposit(35.02);
-//		
-//		otherScott.deposit(650.42);
-//		otherScott.deposit(120.44);
-//		otherScott.withdraw(93.51);
-//		
-//		johnAccount.deposit(89);
-//		johnAccount.deposit(728.84);
-//		johnAccount.withdraw(45.70);
-//		
-//		List<User> everybody = new ArrayList<>();
-//		everybody.add(scott);
-//		everybody.add(scott2);
-//		everybody.add(john);
+		CheckingAccount myAccount = new CheckingAccount("Scott's Main Account", scott);
+		CheckingAccount myOtherAccount = new CheckingAccount("Fun Stuff", scott);
+		CheckingAccount otherScott = new CheckingAccount("Munny", scott2);
+		CheckingAccount johnAccount = new CheckingAccount("John Account", john);
 		
-//		userSave.save(everybody, pathName);
-//		Admin jack = new Admin("Jack", "Fletcher", "capnJack", "123456");
-//		everybody.add(jack);
+		myAccount.deposit(1000);
+		myAccount.withdraw(40);
+		myAccount.withdraw(57.63);
+		myAccount.withdraw(500.10);
+		myAccount.deposit(800);
+		
+		myOtherAccount.deposit(70);
+		myOtherAccount.deposit(32.67);
+		myOtherAccount.deposit(49.73);
+		myOtherAccount.deposit(35.02);
+		
+		otherScott.deposit(650.42);
+		otherScott.deposit(120.44);
+		otherScott.withdraw(93.51);
+		
+		johnAccount.deposit(89);
+		johnAccount.deposit(728.84);
+		johnAccount.withdraw(45.70);
+		
+		List<User> everybody = new ArrayList<>();
+		everybody.add(scott);
+		everybody.add(scott2);
+		everybody.add(john);
+		
+		userSave.save(everybody, pathName);
+		Admin jack = new Admin("Jack", "Fletcher", "capnJack", "123456");
+		everybody.add(jack);
 //		System.out.println(jack);
-//		userSave.save(everybody, pathName);
+		User sam123 = new User("Sam", "Adams", "sam123", "111111");
+		CheckingAccount beer1 = new CheckingAccount("Beer Money 1", sam123);
+		CheckingAccount beer2 = new CheckingAccount("Beer Money 2", sam123);
+		everybody.add(sam123);
+		userSave.save(everybody, pathName);
 //		--------------------------------------------------------------------------
 //		End phase of output test. Comment out the above, except for UserSerializer and pathName
 		
